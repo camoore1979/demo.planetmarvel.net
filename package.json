@@ -8,11 +8,13 @@
     "react-scripts": "3.2.0"
   },
   "scripts": {
+    "eslint": "./node_modules/.bin/eslint ./**/*.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync build/ s3://demo.planetmarvel.net"
+    "deploy": "aws s3 sync build/ s3://demo.planetmarvel.net",
+    "proxy-api": "env-cmd -f ./proxyApi/.env nodemon -- --inspect-brk=12345 ./proxyApi/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -28,5 +30,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "debug": "^4.1.1",
+    "env-cmd": "^10.0.1",
+    "koa": "^2.10.0",
+    "koa-compose": "^4.1.0",
+    "koa-route": "^3.2.0",
+    "nodemon": "^1.19.4",
+    "request-promise": "^4.2.4"
+  },
+  "nodemonConfig": {
+    "ignore": ["build/*", "public/*", "src/*"],
+    "delay": "1500"
   }
 }
