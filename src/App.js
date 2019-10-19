@@ -1,11 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
 import createMarvelApiFetch from './services/createMarvelApiFetch';
 
+import config from './config/config';
+import log from 'loglevel';
+
 const fetchFromMarvelApi = createMarvelApiFetch();
-const { REACT_APP_MY_VAR } = process.env;
+
+// const testLogger = () => {
+//   log.error('error');
+//   log.warn('warn');
+//   log.info('info');
+//   log.debug('debug');
+// };
 
 const doSomething = async () => {
   console.log('doSomething called!');
@@ -19,8 +27,8 @@ const doSomething = async () => {
 };
 
 function App() {
-  console.log(`rendering App with REACT_APP_MY_VAR ${REACT_APP_MY_VAR}`);
-
+  log.info(`rendering App with marvelApiUrl ${config.marvelApiUrl}`);
+  testLogger();
   return (
     <div className="App">
       <header className="App-header">
