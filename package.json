@@ -2,22 +2,66 @@
   "name": "demo.planetmarvel.net",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
-  },
   "scripts": {
-    "eslint": "./node_modules/.bin/eslint ./**/*.js",
+    "lint": "./node_modules/.bin/eslint \"**/*.js\" ",
+    "lint-fix": "./node_modules/.bin/eslint --fix \"**/*.js\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "aws s3 sync build/ s3://demo.planetmarvel.net",
-    "proxy-api": "env-cmd -f ./proxyApi/.env nodemon -- --inspect-brk=12345 ./proxyApi/server.js"
+    "proxy-api-debug": "env-cmd -f ./proxyApi/.env nodemon -- --inspect-brk=12345 ./proxyApi/server.js",
+    "proxy-api": "env-cmd -f ./proxyApi/.env nodemon --use_strict ./proxyApi/server.js"
+  },
+  "dependencies": {
+    "12factor-config": "^2.0.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "3.2.0"
+  },
+  "devDependencies": {
+    "debug": "^4.1.1",
+    "env-cmd": "^10.0.1",
+    "koa": "^2.10.0",
+    "koa-compose": "^4.1.0",
+    "nodemon": "^1.19.4",
+    "request-promise": "^4.2.4"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app"
+    ],
+    "rules": {
+      "quotes": [
+        "error",
+        "single"
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "./proxyApi/**/*.js"
+        ],
+        "parserOptions": {
+          "sourceType": "scripts",
+          "impliedStrict": false
+        },
+        "rules": {
+          "strict": [
+            "error",
+            "safe"
+          ]
+        }
+      }
+    ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "build/*",
+      "public/*",
+      "src/*"
+    ],
+    "delay": "1500"
   },
   "browserslist": {
     "production": [
@@ -30,18 +74,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "debug": "^4.1.1",
-    "env-cmd": "^10.0.1",
-    "koa": "^2.10.0",
-    "koa-compose": "^4.1.0",
-    "koa-route": "^3.2.0",
-    "nodemon": "^1.19.4",
-    "request-promise": "^4.2.4"
-  },
-  "nodemonConfig": {
-    "ignore": ["build/*", "public/*", "src/*"],
-    "delay": "1500"
   }
 }

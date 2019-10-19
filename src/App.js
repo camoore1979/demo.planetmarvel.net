@@ -2,7 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const { REACT_APP_MY_VAR } = process.env;
+
 function App() {
+  console.log(`rendering App with REACT_APP_MY_VAR ${REACT_APP_MY_VAR}`);
   return (
     <div className="App">
       <header className="App-header">

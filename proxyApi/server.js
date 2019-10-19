@@ -1,37 +1,32 @@
+'use strict';
+
+const debug = require('./debug');
 const Koa = require('koa');
+
+// const { PORT, API_PUBLIC_KEY, API_PRIVATE_KEY, API_ROOT } = process.env;
+
+const { port, apiPublicKey, apiPrivateKey, apiRoot } = require('./config');
+const createApiAuthMiddleware = require('./middleware/createApiAuthMiddleware');
+const createProxyApi = require('./middleware/createProxyApi');
+
 const app = new Koa();
-const koaRoute = require('koa-route');
- 
-const { PORT } = process.env;
 
-const pjson = require('../package.json');
-const debug = require('debug')(`${pjson.name}:proxy-api`);
-
-const fetchFromMarvel = require('./fetchFromMarvel');
-
-// TODO: add config / 12factor-config
-
-// const 
-
-// TODO: create a route factory ? 
-
-// response
+// handle call to root
 app.use((ctx, next) => {
-  debug('you are here');
-  // ctx.body = 'Hello Koa';
-  return next();
+  if (ctx.method === 'GET' && ctx.request.path === '/') {
+    ctx.body = 'proxy-api says \'hello!\'';
+  } else {
+    return next();
+  }
 });
 
-app.use(koaRoute.get('/', ctx => {
-  debug('/ you are here');
-  ctx.body = 'Hello koa';
-}));
+app.use(createApiAuthMiddleware({ apiPublicKey, apiPrivateKey }));
 
-app.use(koaRoute.get('/comics', async ctx => {
-  // ctx.body = 'comics data';
-  const { request: { path }, query } = ctx;
-  ctx.body = await fetchFromMarvel(path, query);
-}));
+app.use(
+  createProxyApi({
+    baseUrl: apiRoot
+  })
+);
 
-app.listen(PORT);
-debug(`listening on port ${PORT} `)
+app.listen(port);
+debug(`listening on port ${port} `);

@@ -16,7 +16,7 @@
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "proxy-api"],
+      "runtimeArgs": ["run-script", "proxy-api-debug"],
       "port": 12345
     }
   ]
