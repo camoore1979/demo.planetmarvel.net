@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Col,
@@ -10,18 +10,24 @@ import {
   Row
 } from 'reactstrap';
 
+import connect from '../../store/connect';
 import LogoImage from '../LogoImage';
 import SiteCopyRight from '../SiteCopyright';
 import useDocSubTitle from '../../hooks/useDocSubTitle';
 import './login.css';
 
+// import AppContext from '../../AppContext';
+
 const Login = props => {
   useDocSubTitle('Login');
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const { message, otherMessage } = props;
 
   return (
     <div className="login-container">
+      <p>{message}</p>
+      <p>{otherMessage}</p>
       <div className="login-band">
         <div className="login-form-container">
           <LogoImage />
@@ -69,4 +75,10 @@ const Login = props => {
   );
 };
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    message: state.message
+  };
+};
+
+export default connect(mapStateToProps)(Login);
