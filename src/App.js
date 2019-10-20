@@ -4,17 +4,18 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Main from './components/Main';
-import Login from './components/Login';
-import Landing from './components/Landing';
+import Login from './components/Login/Login';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route path="/" component={Main} />
-      </Switch>
-    </Router>
+    <div className='App'>
+      <Router>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Route path="/" component={Main} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
