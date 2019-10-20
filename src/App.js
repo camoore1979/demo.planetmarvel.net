@@ -1,25 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import createMarvelApiFetch from './services/createMarvelApiFetch';
+import marvelApi from './services/marvelApi/';
 
 import config from './config/config';
 import log from 'loglevel';
-
-const fetchFromMarvelApi = createMarvelApiFetch();
-
-// const testLogger = () => {
-//   log.error('error');
-//   log.warn('warn');
-//   log.info('info');
-//   log.debug('debug');
-// };
 
 const doSomething = async () => {
   console.log('doSomething called!');
 
   try {
-    const results = await fetchFromMarvelApi();
+    const results = await marvelApi('/comics', {
+      searchParams: { title: 'Captain America' }
+    });
     console.log(results);
   } catch (ex) {
     console.error(ex);
@@ -28,7 +21,7 @@ const doSomething = async () => {
 
 function App() {
   log.info(`rendering App with marvelApiUrl ${config.marvelApiUrl}`);
-  testLogger();
+  // testLogger();
   return (
     <div className="App">
       <header className="App-header">

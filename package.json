@@ -17,9 +17,11 @@
   "dependencies": {
     "12factor-config": "^2.0.0",
     "loglevel": "^1.6.4",
+    "qs": "^6.9.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "urijs": "^1.19.1"
   },
   "devDependencies": {
     "@koa/cors": "^3.0.0",
