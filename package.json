@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "12factor-config": "^2.0.0",
+    "bootstrap": "^4.3.1",
     "loglevel": "^1.6.4",
     "qs": "^6.9.0",
     "react": "^16.10.2",
