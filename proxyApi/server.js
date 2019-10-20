@@ -4,9 +4,7 @@ const debug = require('./debug');
 const Koa = require('koa');
 const cors = require('@koa/cors');
 
-// const { PORT, API_PUBLIC_KEY, API_PRIVATE_KEY, API_ROOT } = process.env;
-
-const { port, apiPublicKey, apiPrivateKey, apiRoot } = require('./config');
+const { port, apiPublicKey, apiPrivateKey, apiRoot } = require('./proxyConfig');
 const createApiAuthMiddleware = require('./middleware/createApiAuthMiddleware');
 const createProxyApi = require('./middleware/createProxyApi');
 

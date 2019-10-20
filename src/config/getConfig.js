@@ -8,9 +8,9 @@ export default function getConfig() {
       required: false
     },
     apiPublicKey: {
-      env: 'API_PUBLIC_KEY',
+      env: 'REACT_APP_MARVEL_API_KEY',
       type: 'string',
-      required: false
+      required: process.env.NODE_ENV === 'production'
     },
     marvelApiUrl: {
       env: 'REACT_APP_MARVEL_API_URL',
@@ -19,4 +19,3 @@ export default function getConfig() {
     }
   });
 }
-
