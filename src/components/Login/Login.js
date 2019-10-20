@@ -1,14 +1,5 @@
-import React, { useState } from 'react';
-import {
-  Button,
-  Col,
-  Container,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Row
-} from 'reactstrap';
+import React, { useEffect, useState } from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import connect from '../../store/connect';
 import LogoImage from '../LogoImage';
@@ -20,9 +11,13 @@ import './login.css';
 
 const Login = props => {
   useDocSubTitle('Login');
-  const [userName, setUserName] = useState('');
+  const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const { message, otherMessage } = props;
+  const { message, otherMessage, dispatchLogin, dispatchSayHello } = props;
+
+  useEffect(() => {
+    setTimeout(() => dispatchSayHello(), 3000);
+  });
 
   return (
     <div className="login-container">
@@ -40,7 +35,7 @@ const Login = props => {
                 name="email"
                 id="email"
                 placeholder="enter your email"
-                value={userName}
+                value={username}
                 onChange={event => {
                   setUserName(event.target.value);
                 }}
@@ -60,9 +55,10 @@ const Login = props => {
               />
             </FormGroup>
             <Button
-              onCLick={event => {
+              onClick={event => {
                 event.preventDefault();
-                alert(`${userName} is logged in!`);
+                alert(`${username} is logged in!`);
+                dispatchLogin(username, password);
               }}
             >
               Submit
@@ -81,4 +77,15 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchLogin: (username, password) =>
+      dispatch({ type: 'LOGIN', username, password }),
+    dispatchSayHello: () => dispatch({ type: 'SAY_HELLO' })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
