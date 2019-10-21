@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import log from 'loglevel';
+
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import connect from '../../store/connect';
@@ -7,26 +10,29 @@ import SiteCopyRight from '../SiteCopyright';
 import useDocSubTitle from '../../hooks/useDocSubTitle';
 import './login.css';
 
-// import AppContext from '../../AppContext';
-
 const Login = props => {
   useDocSubTitle('Login');
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const { message, otherMessage, dispatchLogin, dispatchSayHello } = props;
-
-  useEffect(() => {
-    setTimeout(() => dispatchSayHello(), 3000);
-  });
-
+  const { dispatchLogin, isLoggedIn } = props;
+  const history = useHistory();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: '/' } };
+  if (isLoggedIn) history.replace(from);
   return (
     <div className="login-container">
-      <p>{message}</p>
-      <p>{otherMessage}</p>
       <div className="login-band">
         <div className="login-form-container">
           <LogoImage />
-          <Form className="login-form">
+          <Form
+            className="login-form"
+            onSubmit={event => {
+              event.preventDefault();
+              dispatchLogin(username, password);
+              history.replace(from);
+              log.debug(`logging in ${username} transfering to ${from}`);
+            }}
+          >
             <h2 className="login-header">Sign In</h2>
             <FormGroup>
               <Label for="email">Email</Label>
@@ -54,15 +60,7 @@ const Login = props => {
                 }}
               />
             </FormGroup>
-            <Button
-              onClick={event => {
-                event.preventDefault();
-                alert(`${username} is logged in!`);
-                dispatchLogin(username, password);
-              }}
-            >
-              Submit
-            </Button>
+            <Button type="submit">Submit</Button>
           </Form>
         </div>
       </div>
@@ -71,17 +69,16 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ isLoggedIn }) => {
   return {
-    message: state.message
+    isLoggedIn
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     dispatchLogin: (username, password) =>
-      dispatch({ type: 'LOGIN', username, password }),
-    dispatchSayHello: () => dispatch({ type: 'SAY_HELLO' })
+      dispatch({ type: 'LOGIN', username, password })
   };
 };
 

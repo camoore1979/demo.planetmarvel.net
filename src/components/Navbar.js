@@ -6,44 +6,50 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem
+} from 'reactstrap';
 
-const Header = (props) => {
+import connect from '../store/connect';
+
+import NavLink from './NavLink';
+
+const _NavBar = props => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <div className="navbar-brand">
+          <NavLink to="/">Planet Marvel</NavLink>
+        </div>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink to="/comingsoon">Characters</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <NavLink to="/comics">Comics</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/comingsoon">Movies</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Options
+                Bruce Wayne
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
+                <DropdownItem>Profile</DropdownItem>
+                <DropdownItem>Settings</DropdownItem>
+                <DropdownItem
+                  onClick={() => props.dispatchLogout()}
+                  color="link"
+                >
+                  Logout
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -52,6 +58,12 @@ const Header = (props) => {
       </Navbar>
     </div>
   );
-}
+};
 
-export default Header;
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchLogout: () => dispatch({ type: 'LOGOUT' })
+  };
+};
+
+export default connect(mapDispatchToProps)(_NavBar);

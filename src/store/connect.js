@@ -5,9 +5,23 @@ export default function connect(mapStateToProps, mapDispatchToProps) {
   return function(Component) {
     return function(otherProps) {
       const { state, dispatch } = useContext(AppContext);
-      const stateToProps = mapStateToProps(state);
-      const dispatchToProps = mapDispatchToProps && mapDispatchToProps(dispatch);
-      const props = { ...otherProps, ...stateToProps, ...dispatchToProps };
+
+      let stateToProps;
+      let dispatchToProps;
+
+      if (mapDispatchToProps) {
+        stateToProps = mapStateToProps(state);
+        dispatchToProps = mapDispatchToProps(dispatch);
+      } else if (mapStateToProps.name === 'mapDispatchToProps') {
+        dispatchToProps = mapStateToProps(dispatch);
+      } else {
+        stateToProps = mapStateToProps(state);
+      }
+      const props = {
+        ...otherProps,
+        ...(stateToProps || {}),
+        ...(dispatchToProps || {})
+      };
       // ? ...props
       return <Component {...props} />;
     };
