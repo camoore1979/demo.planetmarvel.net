@@ -12,10 +12,10 @@ import {
   DropdownItem
 } from 'reactstrap';
 
-import connect from '../store/connect';
+import connect from '../../store/connect';
 
 import NavLink from './NavLink';
-import LogoImage from './LogoImage';
+import LogoImage from '../LogoImage';
 
 import './NavBar.css';
 

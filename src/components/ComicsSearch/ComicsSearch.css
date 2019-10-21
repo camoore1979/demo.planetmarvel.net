@@ -1,0 +1,19 @@
+.comics-container {
+  background: green;
+  /* min-height: calc(100vh - 120px); */
+  width: 80%;
+  max-width:800px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.comic-card {
+  margin:5px;
+  width:250px;
+  color: black;
+}
+
+.comic-card:hover {
+  cursor: pointer;
+}

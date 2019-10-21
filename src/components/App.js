@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import connect from '../store/connect';
-import Main from './Main';
+import Main from './Main/Main';
 import Login from './Login/Login';
 import PrivateRoute from './PrivateRoute';
 
