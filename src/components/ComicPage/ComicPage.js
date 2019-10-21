@@ -1,24 +1,59 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-
+import { useHistory } from 'react-router-dom';
+import { Button, Media } from 'reactstrap';
 import useDocSubTitle from '../../hooks/useDocSubTitle';
 import connect from '../../store/connect';
-
+import getMarvelImgSrc from '../../helpers/getMarvelImgSrc';
+import moment from 'moment';
+import './ComicPage.css';
 
 //TODO: handle case where localstorage is empty, but user is authed and needs to fetch the
 // record from this route
-const ComicsPage = ({ id, title, description }) => {
-  useDocSubTitle('Comics');
-  const { comicId } = useParams();
+const ComicsPage = ({
+  creators,
+  dates,
+  description,
+  id,
+  issueNumber,
+  thumbnail,
+  series,
+  title
+}) => {
+  const history = useHistory();
+  useDocSubTitle(title);
+  const cardImgSrc = getMarvelImgSrc({
+    ...thumbnail,
+    imageSize: 'portrait_uncanny'
+  });
+  const { date: publishDate } = dates.find(d => d.type === 'onsaleDate');
+  const creatorsString =
+    creators &&
+    creators.items &&
+    creators.items.map(c => `${c.name} (${c.role})`).join(', ');
 
   return (
-    <div className="comics-search">
-      <div className="comics-search-list">
-        <div> Comic! {comicId} </div>
-        <div> { id }</div>
-        <div> { title }</div>
+    <div className="comic-page">
+      <div className="comic-page-view">
+        <img className="comic-page-img" src={cardImgSrc} alt={`${title}`} />
 
-        <p> </p>
+        <Media className="comic-page-information">
+          <Media body>
+            <Media list>
+              <Media heading>{title}</Media>
+              <Media>{series.name}</Media>
+              <Media>
+                {publishDate && moment(publishDate).format('MMMM D, YYYY')}
+              </Media>
+              <Media>Issue #{issueNumber}</Media>
+            </Media>
+            <Media>{description}</Media>
+            <br />
+            <Media>{creatorsString}</Media>
+          </Media>
+        </Media>
+        <Button color="link" onClick={() => history.push('/comics')}>
+          Return to List
+        </Button>
       </div>
     </div>
   );
