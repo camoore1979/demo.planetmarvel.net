@@ -35,7 +35,7 @@
   border-radius: 8px;
   margin-top: 25px;
   margin-bottom: 50px;
-  max-width: 400vmin;
+  /* max-width: 400px; */
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

@@ -1,7 +1,6 @@
 const initialState = {
   isLoggedIn: false,
-  message: 'hello world',
-  asdf: 'asdf'
+  user: {}
 };
 
 export default initialState;

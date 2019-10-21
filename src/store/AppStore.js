@@ -6,7 +6,7 @@ import AppReducer from './AppReducer';
 import initialState from './initialState';
 
 const localState = window.localStorage.getItem('AppState');
-const state0 = localState ? JSON.parse(localState) : initialState;
+const storedState = localState ? JSON.parse(localState) : initialState;
 
 export default function AppStore(props) {
   const [state, dispatch] = useReducer((state, action) => {
@@ -23,7 +23,7 @@ export default function AppStore(props) {
 
     window.localStorage.setItem('AppState', JSON.stringify(newState));
     return newState;
-  }, state0);
+  }, { ...initialState, ...storedState});
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       {props.children}

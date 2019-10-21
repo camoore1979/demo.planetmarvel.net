@@ -5,16 +5,21 @@ const AppReducer = (action, state) => {
     case 'LOGIN': {
       const { username, password } = action;
       const isLoggedIn =
-        username === 'bwayne@batcave.io' && password === 'ironmanenvy';
+        username === 'bwayne@batcave.io' && password === 'iamironman';
       return {
         ...state,
-        isLoggedIn
+        isLoggedIn,
+        user: {
+          firstName: 'Bruce',
+          lastName: 'Wayne'
+        }
       };
     }
     case 'LOGOUT': {
       return {
         ...state,
-        isLoggedIn: false
+        isLoggedIn: false,
+        user: {}
       };
     }
     default:

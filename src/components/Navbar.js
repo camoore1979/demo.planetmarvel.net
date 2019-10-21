@@ -15,16 +15,26 @@ import {
 import connect from '../store/connect';
 
 import NavLink from './NavLink';
+import LogoImage from './LogoImage';
+
+import './NavBar.css';
 
 const _NavBar = props => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <div className="navbar-brand">
-          <NavLink to="/">Planet Marvel</NavLink>
+      <Navbar className="nav-marvel" color="dark" dark expand="md">
+        <div className="navbar-brand navbar-brand-marvel">
+          {/* <LogoImage dark height='32px' width='32px' /> */}
+          <NavLink to="/">
+            <img
+              alt="planet marvel logo"
+              src="planet-marvel-title-img.png"
+              // height={''}
+              width="200px"
+            />
+          </NavLink>
         </div>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -40,7 +50,7 @@ const _NavBar = props => {
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Bruce Wayne
+                {props.fullname}
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>Profile</DropdownItem>
@@ -60,10 +70,19 @@ const _NavBar = props => {
   );
 };
 
+const mapStateToProps = ({ user: { firstName, lastName } }) => {
+  return {
+    fullname: `${firstName} ${lastName}`
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     dispatchLogout: () => dispatch({ type: 'LOGOUT' })
   };
 };
 
-export default connect(mapDispatchToProps)(_NavBar);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_NavBar);
