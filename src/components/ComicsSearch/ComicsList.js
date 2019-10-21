@@ -5,7 +5,12 @@ import './ComicsSearch.css';
 
 import ComicCard from './ComicCard';
 import Loader from '../Loader/Loader';
-import fetchFromMarvelApi from '../../services/marvelApi/';
+// import fetchFromMarvelApi from '../../services/marvelApi/';
+
+const comicsData = require('./comicsData.json');
+// const returnedComics = comicsData;
+const returnedComics = [];
+
 
 const ComicsList = () => {
   const [comics, setComics] = useState([]);
@@ -13,10 +18,11 @@ const ComicsList = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchFromMarvelApi('/comics');
-      const returnedComics = data.data.results;
+      // const data = await fetchFromMarvelApi('/comics');
+      // const returnedComics = data.data.results;
       setComics(returnedComics);
-      setIsLoading(false);
+      console.log(returnedComics);
+      // setIsLoading(false);
     }
     fetchData();
   });
