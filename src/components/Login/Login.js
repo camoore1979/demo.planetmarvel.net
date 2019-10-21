@@ -14,7 +14,7 @@ const Login = props => {
   useDocSubTitle('Login');
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const { dispatchLogin, isLoggedIn } = props;
+  const { dispatchLogin, isLoggedIn, logInError } = props;
   const history = useHistory();
   const location = useLocation();
   const { from } = location.state || { from: { pathname: '/' } };
@@ -60,6 +60,7 @@ const Login = props => {
                 }}
               />
             </FormGroup>
+            <p>{logInError}</p>
             <Button type="submit">Submit</Button>
           </Form>
         </div>
@@ -69,9 +70,10 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = ({ isLoggedIn }) => {
+const mapStateToProps = ({ isLoggedIn, logInError }) => {
   return {
-    isLoggedIn
+    isLoggedIn,
+    logInError
   };
 };
 

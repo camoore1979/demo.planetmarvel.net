@@ -1,0 +1,16 @@
+
+.search-input {
+  padding: 10px;
+  /* border: 3px black solid; */
+}
+
+.search-input label {
+  width: 80px;
+  padding-top: 5px;
+  text-align: center;
+  /* border: 3px black solid; */
+}
+
+.search-input input {
+  width: 50vw;
+}

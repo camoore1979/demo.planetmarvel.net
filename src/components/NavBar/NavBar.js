@@ -3,7 +3,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   UncontrolledDropdown,
@@ -15,7 +14,6 @@ import {
 import connect from '../../store/connect';
 
 import NavLink from './NavLink';
-import LogoImage from '../LogoImage';
 
 import './NavBar.css';
 
@@ -36,17 +34,20 @@ const _NavBar = props => {
             />
           </NavLink>
         </div>
+        <div className="nav-subtitle">
+          Home of the better, <i>wittier</i> Supers.
+        </div>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink to="/comingsoon">Characters</NavLink>
+              <NavLink to="/characters">Characters</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/comics">Comics</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/comingsoon">Movies</NavLink>
+              <NavLink to="/movies">Movies</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

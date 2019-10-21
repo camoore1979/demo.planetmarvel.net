@@ -5,9 +5,9 @@ const getThumbnailSrc = ({ path, extension, imageSize }) => {
   return `${path}/${imageSize || 'portrait_small'}.${extension}`;
 };
 
-const shortenText = text => `${text.substr(0,240)}...`
+const shortenText = text => `${text.substr(0, 240)}...`;
 
-const ComicCard = ({ description, title, thumbnail }) => {
+const ComicCard = ({ description, id, title, thumbnail, onClick }) => {
   // const { comicData }
   const cardImgSrc = getThumbnailSrc({
     ...thumbnail,
@@ -15,14 +15,13 @@ const ComicCard = ({ description, title, thumbnail }) => {
   });
   return (
     <div className="comic-card">
-      <Card onClick={() => alert('click!')}>
+      <Card onClick={() => onClick(id)}>
         <CardImg top width="100%" src={cardImgSrc} alt="Card image cap" />
         <CardBody>
           <CardTitle>
             <strong>{title}</strong>
           </CardTitle>
           <CardText>{description && shortenText(description)}</CardText>
-          {/* <Button>Button</Button> */}
         </CardBody>
       </Card>
     </div>

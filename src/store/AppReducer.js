@@ -1,7 +1,5 @@
 const AppReducer = (action, state) => {
   switch (action.type) {
-    case 'SAY_HELLO':
-      return { ...state, message: 'parlez vouse' };
     case 'LOGIN': {
       const { username, password } = action;
       const isLoggedIn =
@@ -9,6 +7,7 @@ const AppReducer = (action, state) => {
       return {
         ...state,
         isLoggedIn,
+        logInError: !isLoggedIn && 'Username or password is incorrect.',
         user: {
           firstName: 'Bruce',
           lastName: 'Wayne'
@@ -21,6 +20,12 @@ const AppReducer = (action, state) => {
         isLoggedIn: false,
         user: {}
       };
+    }
+    case 'SET_COMIC': {
+      return {
+        ...state,
+        comic: action.comic
+      }
     }
     default:
       return state;

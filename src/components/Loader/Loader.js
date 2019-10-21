@@ -13,7 +13,7 @@ export default () => (
           r="20"
           fill="none"
           strokeWidth="2"
-          strokeMiterLimit="10"
+          strokeMiterlimit="10"
         />
       </svg>
     </div>

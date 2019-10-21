@@ -1,15 +1,9 @@
-.showbox {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 5%;
-}
+
 .showbox .loader {
   position: relative;
   margin: 0px auto;
   width: 100px;
+  border: 2px purple;
 }
 .showbox .loader:before {
   content: '';
