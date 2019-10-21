@@ -1,5 +1,9 @@
 import React from 'react';
-
-const Landing = () => <div> LANDING</div>;
+import Background from './Background/Background';
+const Landing = () => (
+  <div>
+    <Background />
+  </div>
+);
 
 export default Landing;

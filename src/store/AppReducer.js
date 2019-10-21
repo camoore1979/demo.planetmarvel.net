@@ -21,11 +21,17 @@ const AppReducer = (action, state) => {
         user: {}
       };
     }
+    case 'SET_SEARCH_RESULTS': {
+      return {
+        ...state,
+        searchResults: action.searchResults
+      };
+    }
     case 'SET_COMIC': {
       return {
         ...state,
         comic: action.comic
-      }
+      };
     }
     default:
       return state;

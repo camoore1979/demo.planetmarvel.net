@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-
-import './ComicsSearch.css';
+import connect from '../../store/connect';
 import fetchFromMarvelApi from '../../services/marvelApi';
 import ComicsList from './ComicsList';
 import SearchInput from '../SearchInput/SearchInput';
 import Loader from '../Loader/Loader';
 import useDocSubTitle from '../../hooks/useDocSubTitle';
 
-const ComicsSearchPage = () => {
+import './ComicsSearch.css';
+
+const ComicsSearchPage = ({ dispatchSetSearchResults, searchResults }) => {
   useDocSubTitle('Comics');
-  const [comics, setComics] = useState([]);
   const [searchString, setSearchString] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
@@ -17,13 +17,13 @@ const ComicsSearchPage = () => {
   const handleSearch = async event => {
     setIsEmpty(false);
     if (event.key === 'Enter') {
-      if (!searchString) return setComics([]);
+      if (!searchString) return dispatchSetSearchResults([]);
       setIsLoading(true);
       const data = await fetchFromMarvelApi('/comics', {
         searchParams: { title: searchString }
       });
       const returnedComics = data.data.results;
-      setComics(returnedComics);
+      dispatchSetSearchResults(returnedComics);
       setIsLoading(false);
       if (!returnedComics || returnedComics.length === 0) setIsEmpty(true);
     }
@@ -41,10 +41,22 @@ const ComicsSearchPage = () => {
 
       <div className="comics-search-list">
         {isEmpty && <p>No titles found.</p>}
-        {isLoading ? <Loader /> : <ComicsList comics={comics} />}
+        {isLoading ? <Loader /> : <ComicsList comics={searchResults} />}
       </div>
     </div>
   );
 };
 
-export default ComicsSearchPage;
+const mapStateToProps = ({ searchResults }) => ({
+  searchResults
+});
+
+const mapDispatchToProps = dispatch => ({
+  dispatchSetSearchResults: searchResults =>
+    dispatch({ type: 'SET_SEARCH_RESULTS', searchResults })
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ComicsSearchPage);

@@ -1,10 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Media } from 'reactstrap';
-import useDocSubTitle from '../../hooks/useDocSubTitle';
+import moment from 'moment';
+
 import connect from '../../store/connect';
 import getMarvelImgSrc from '../../helpers/getMarvelImgSrc';
-import moment from 'moment';
+import useDocSubTitle from '../../hooks/useDocSubTitle';
+
+import ComicDescription from './ComicDescription';
+
 import './ComicPage.css';
 
 //TODO: handle case where localstorage is empty, but user is authed and needs to fetch the
@@ -46,7 +50,9 @@ const ComicsPage = ({
               </Media>
               <Media>Issue #{issueNumber}</Media>
             </Media>
-            <Media>{description}</Media>
+            <Media>
+              <ComicDescription description={description} />
+            </Media>
             <br />
             <Media>{creatorsString}</Media>
           </Media>
