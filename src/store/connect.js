@@ -11,7 +11,7 @@ export default function connect(mapStateToProps, mapDispatchToProps) {
 
       if (mapDispatchToProps) {
         stateToProps = mapStateToProps && mapStateToProps(state);
-        dispatchToProps = mapDispatchToProps && mapDispatchToProps(dispatch);
+        dispatchToProps = mapDispatchToProps(dispatch);
       } else if (mapStateToProps.name === 'mapDispatchToProps') {
         dispatchToProps = mapStateToProps(dispatch);
       } else {
