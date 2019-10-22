@@ -62,11 +62,14 @@ Run after `yarn build` in order to serve up the App locally in production mode
 
 ### Local Development
 
+#### Accessing Marvel's Data
+
 Note: You will have to have a public and private key to the developer.marvel.com API for this to work.
 
-1. Install dependencies: `$ yarn install`
-2. Create a local `.env` file for the Proxy API from [./proxyApi/.env.example](./proxyApi/.env.example). Populate needed values.
-3. Create a local `.env` file for the Client from [./.env.example](./.env.example). Populate needed values.
-4. Run the proxy: `$ yarn proxy-api`
-5. Launch the client: `$ yarn start`
+For doing local development, you can use the Proxy Api, since developer.marvel.com forces you to whitelist the domains you are accessing the api from, if your calls are coming from the client. The Proxy Api allows you to make server-side calls to the Marvel Api. Works great!
 
+1. Install dependencies: `$ yarn install`
+2. Configure the Proxy. Create a local `./proxyApi/.env` file for the Proxy API from [./proxyApi/.env.example](./proxyApi/.env.example). Populate needed values.
+3. Configure the Client. Create a local root `.env` file for the Client from [./.env.example](./.env.example). Populate needed values.
+4. Run the proxy api: `$ yarn proxy-api`
+5. Launch the client: `$ yarn start`
