@@ -1,0 +1,25 @@
+.comic-page {
+  /* background: green; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.comic-page-view {
+  /* background: purple; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 25px 0;
+  max-width: 67vw;
+}
+
+.comic-page-img {
+  width: 25vw;
+}
+
+.comic-page-information {
+  margin: 10px;
+  padding: 10px;
+}

@@ -1,0 +1,14 @@
+.nav-marvel {
+  background-color: #202020 !important;
+}
+
+.navbar-brand-marvel a {
+  color: #ea121d;
+  font-family: "Arial Black";
+}
+
+.nav-subtitle {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 0.9em;
+  color: lightgray;
+}

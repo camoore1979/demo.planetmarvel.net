@@ -1,0 +1,29 @@
+.comics-search {
+  /* background: green; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.comics-search-input {
+  display: flex;
+  /* background: purple; */
+  /* padding: 10px; */
+}
+
+.comics-search-list {
+  display: flex;
+  padding: 25px 0;
+  /* background: red; */
+}
+
+.comic-card {
+  margin: 5px;
+  width: 250px;
+  color: black;
+}
+
+.comic-card:hover {
+  cursor: pointer;
+}
