@@ -11,7 +11,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The app is hosted on AWS S3 & CloudFront. It is publically available at .
+The app is hosted on AWS S3 & CloudFront.
 
 ## INTERACTING WITH THE DEMO
 
