@@ -12,7 +12,7 @@ try {
 // set logging level, for more see: https://github.com/pimterry/loglevel
 log.setLevel(config.logLevel || 'error');
 
-log.debug(`app is running in  ${process.env.NODE_ENV} mode`);
+log.debug(`app is running in NODE_ENV === "${process.env.NODE_ENV}" mode`);
 log.debug('config loaded: ', config);
 
 export default config;

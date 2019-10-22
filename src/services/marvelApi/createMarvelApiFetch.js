@@ -4,7 +4,9 @@ import getApiUrl from '../helpers/getApiUrl';
 export default function createMarvelApiFetch(config) {
   const { apiPublicKey: apikey, marvelApiUrl: apiRoot } = config;
   const authParams =
-    process.env.NODE_ENV === 'production' && apikey
+    process.env.NODE_ENV === 'production' &&
+    process.env.REACT_APP_ENV === 'production' &&
+    apikey
       ? {
           apikey
         }
@@ -17,7 +19,7 @@ export default function createMarvelApiFetch(config) {
    * @param {object} [options]
    * @param {string} [options.id] id of resource to fetch
    * @param {object} [options.searchParams] any search params to add to query string
-   * @returns {*} results of fetch 
+   * @returns {*} results of fetch
    */
   return async function fetchFromMarvelApi(path, options) {
     const url = getApiUrl({ path, apiRoot, authParams, ...options });

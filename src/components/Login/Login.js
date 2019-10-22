@@ -61,7 +61,7 @@ const Login = props => {
               />
             </FormGroup>
             <p>{logInError}</p>
-            <Button type="submit">Submit</Button>
+            <Button className="login-button" type="submit">Submit</Button>
           </Form>
         </div>
       </div>

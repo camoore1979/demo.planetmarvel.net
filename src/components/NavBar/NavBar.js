@@ -35,7 +35,7 @@ const _NavBar = props => {
           </NavLink>
         </div>
         <div className="nav-subtitle">
-          Home of the better, <i>wittier</i> Supers.
+          Home of the better, <i>witty</i> Supers.
         </div>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

@@ -7,6 +7,10 @@ import App from './components/App';
 import AppStore from './store/AppStore';
 import * as serviceWorker from './serviceWorker';
 
+import printApiInfo from './utils/printApiInfo';
+
+printApiInfo();
+
 const AppContainer = () => (
   <AppStore>
     <App />

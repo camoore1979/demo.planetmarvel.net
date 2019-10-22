@@ -11,7 +11,7 @@ export default function getConfig() {
     apiPublicKey: {
       env: 'REACT_APP_MARVEL_API_KEY',
       type: 'string',
-      required: process.env.NODE_ENV === 'production'
+      required: process.env.NODE_ENV === 'production' && process.env.REACT_APP_ENV === 'production'
     },
     logLevel: {
       env: 'REACT_APP_LOG_LEVEL',

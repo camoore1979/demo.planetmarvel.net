@@ -51,7 +51,7 @@ const ComicsPage = ({
               <Media>Issue #{issueNumber}</Media>
             </Media>
             <Media>
-              <ComicDescription description={description} />
+              {description && <ComicDescription description={description} />}
             </Media>
             <br />
             <Media>{creatorsString}</Media>

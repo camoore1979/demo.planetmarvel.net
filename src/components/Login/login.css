@@ -25,7 +25,7 @@
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  padding-top: 25px
+  padding-top: 25px;
 }
 
 .login-form {
@@ -45,4 +45,8 @@
 
 .login-header {
   text-align: center;
+}
+
+.login-button {
+  background-color: #343131;
 }

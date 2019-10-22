@@ -10,8 +10,8 @@ export default function connect(mapStateToProps, mapDispatchToProps) {
       let dispatchToProps;
 
       if (mapDispatchToProps) {
-        stateToProps = mapStateToProps(state);
-        dispatchToProps = mapDispatchToProps(dispatch);
+        stateToProps = mapStateToProps && mapStateToProps(state);
+        dispatchToProps = mapDispatchToProps && mapDispatchToProps(dispatch);
       } else if (mapStateToProps.name === 'mapDispatchToProps') {
         dispatchToProps = mapStateToProps(dispatch);
       } else {
