@@ -7,7 +7,7 @@
 <br/>
 <p align="center">Home for the better, <i>witty</i> Supers.</p>
 
-[Planet Marvel ](demo.planetmarvel.net)is a demo app built with create-react-app. It was built per these [specs](./SPECS.md)
+[Planet Marvel ](https://demo.planetmarvel.net)is a demo app built with create-react-app. It was built per these [specs](./SPECS.md)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -15,7 +15,7 @@ The app is hosted on AWS S3 & CloudFront. It is publically available at .
 
 ## INTERACTING WITH THE DEMO
 
-1. Navigate to [demo.planetmarvel.net](demo.planetmarvel.net)
+1. Navigate to [demo.planetmarvel.net](https://demo.planetmarvel.net)
 2. Login with `bwayne@batcave.io` and password `iamironman` (someone is spying in from the other superhero multiverse, with some envy.)
 3. Navigate to `Comics` on the NavBar.
 4. Search for any Marvel super hero. Iron Man. Captain America. Hulk. Thor. Spider-Man. 
