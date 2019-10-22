@@ -7,7 +7,7 @@
 <br/>
 <p align="center">Home for the better, <i>witty</i> Supers.</p>
 
-[Planet Marvel](https://demo.planetmarvel.net)is a demo app built with create-react-app. It was built per these [specs](./SPECS.md).
+[Planet Marvel](https://demo.planetmarvel.net) is a demo app built with create-react-app. It was built per these [specs](./SPECS.md).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

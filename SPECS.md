@@ -24,7 +24,7 @@ The following API endpoints should provide the necessary data:
 * GET /v1/public/comics 
 * GET /v1/public/comics/{comicId} 
 
-The application should be built using React and include the use of one of the followingReact component libraries - Semantic UI React or Reactstrap.
+The application should be built using React and include the use of one of the following React component libraries - Semantic UI React or Reactstrap.
 
 All source code, with relevant commit notes, should be delivered through a public repo related to your GitHub account.
 
