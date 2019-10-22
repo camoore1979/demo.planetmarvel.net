@@ -7,16 +7,18 @@
 <br/>
 <p align="center">Home for the better, <i>witty</i> Supers.</p>
 
-[Planet Marvel ](https://demo.planetmarvel.net)is a demo app built with create-react-app. It was built per these [specs](./SPECS.md)
+[Planet Marvel](https://demo.planetmarvel.net)is a demo app built with create-react-app. It was built per these [specs](./SPECS.md).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 The app is hosted on AWS S3 & CloudFront.
 
+The data the app consumes comes from the [developer.marvel.com](https://developer.marvel.com) publicly available API. All data is thus copyright to Marvel.
+
 ## INTERACTING WITH THE DEMO
 
 1. Navigate to [demo.planetmarvel.net](https://demo.planetmarvel.net)
-2. Login with `bwayne@batcave.io` and password `iamironman` (someone is spying in from the other superhero multiverse, with some envy.)
+2. Login with `bwayne@batcave.io` and password `iamironman` (someone is spying in from the other superhero multiverse, with some envy).
 3. Navigate to `Comics` on the NavBar.
 4. Search for any Marvel super hero. Iron Man. Captain America. Hulk. Thor. Spider-Man. 
 5. Scroll thru results. Click on any Comic card, should navigate to the comics details page.
@@ -67,3 +69,4 @@ Note: You will have to have a public and private key to the developer.marvel.com
 3. Create a local `.env` file for the Client from [./.env.example](./.env.example). Populate needed values.
 4. Run the proxy: `$ yarn proxy-api`
 5. Launch the client: `$ yarn start`
+
